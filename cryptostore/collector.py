@@ -132,14 +132,15 @@ class Collector(Process):
                         cb[TICKER].append(TickerZMQ(host=host, port=port))
                     elif callback_type == CANDLES:
                         cb[CANDLES].append(CandlesZMQ(host=host, port=port))
-            fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
-            LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
-            #             except Exception as e:
-# #                 print(feed_kwargs)
-# #                 print({callback_type: self.exchange_config[callback_type]})
-# #                 print(self.exchange_config)
-# #                 LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
-#                 raise e
+                try:
+                    fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
+#             LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
+                except Exception as e:
+#                 print(feed_kwargs)
+#                 print({callback_type: self.exchange_config[callback_type]})
+#                 print(self.exchange_config)
+                LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
+                raise e
                 
             LOG.info(f"Collector added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
 
