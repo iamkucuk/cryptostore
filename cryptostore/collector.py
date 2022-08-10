@@ -132,8 +132,11 @@ class Collector(Process):
                         cb[TICKER].append(TickerZMQ(host=host, port=port))
                     elif callback_type == CANDLES:
                         cb[CANDLES].append(CandlesZMQ(host=host, port=port))
-
-            fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
+            try:
+                fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
+            except:
+                print(feed_kwargs)
+                
             LOG.info(f"Collector added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
 
         # Signal handlers are set up inside FeedHandler objects
