@@ -136,6 +136,7 @@ class Collector(Process):
                 fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
             except Exception as e:
                 print(feed_kwargs)
+                print({callback_type: self.exchange_config[callback_type]})
                 raise e
                 
             LOG.info(f"Collector added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
