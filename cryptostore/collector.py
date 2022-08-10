@@ -137,6 +137,8 @@ class Collector(Process):
             except Exception as e:
                 print(feed_kwargs)
                 print({callback_type: self.exchange_config[callback_type]})
+                print(self.exchange_config)
+                LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
                 raise e
                 
             LOG.info(f"Collector added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
