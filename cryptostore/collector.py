@@ -136,11 +136,13 @@ class Collector(Process):
                 fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
 #             LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
             except Exception as e:
+                del feed_kwargs["symbols"]
+                fh.add_feed(self.exchange, subscription={callback_type: self.exchange_config[callback_type]}, callbacks=cb, **feed_kwargs)
 #                 print(feed_kwargs)
 #                 print({callback_type: self.exchange_config[callback_type]})
 #                 print(self.exchange_config)
-                LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
-                raise e
+#                 LOG.info(f"Collector COULD NOT BE added feed handler - {self.exchange}({callback_type.upper()}, \n{self.exchange_config[callback_type]}, \n{feed_kwargs})")
+#                 raise e
                 
             LOG.info(f"Collector added feed handler - {self.exchange}({callback_type.upper()}, {feed_kwargs})")
 
