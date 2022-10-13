@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.0.4
+  * Bugfix: Fixed typo for a kwarg.
+
 ### 1.0.3
   * Feature: Add tool to generate docker run commands
 
