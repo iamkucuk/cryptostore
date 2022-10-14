@@ -11,7 +11,10 @@ RUN pip install --no-cache-dir motor
 RUN pip install --no-cache-dir asyncpg
 RUN pip install --no-cache-dir aiokafka
 
-COPY cryptostore.py /cryptostore.py
+WORKDIR /cryptostore
 
-CMD ["/cryptostore.py"]
-ENTRYPOINT ["python"]
+CMD [ "python cryptostore.py" ]
+# COPY cryptostore.py /cryptostore.py
+
+# CMD ["/cryptostore.py"]
+# ENTRYPOINT ["python"]
