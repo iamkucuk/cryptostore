@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir aiokafka
 
 WORKDIR /cryptostore
 
-CMD [ "python cryptostore.py" ]
+CMD [ "python",  "cryptostore.py" ]
 # COPY cryptostore.py /cryptostore.py
 
 # CMD ["/cryptostore.py"]
