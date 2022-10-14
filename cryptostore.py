@@ -53,8 +53,8 @@ def load_config() -> Feed:
     snap_interval = int(snap_interval)
     host = os.environ.get('HOST', '127.0.0.1')
     port = os.environ.get('PORT')
-    # if port:
-    #     port = int(port)
+    if port:
+        port = int(port)
     candle_interval = os.environ.get('CANDLE_INTERVAL', '1m')
     database = os.environ.get('DATABASE')
     user = os.environ.get('USER')
@@ -132,6 +132,7 @@ def load_config() -> Feed:
         }
     elif backend == 'KAFKA':
         # args = {'bootstrap': host, 'port': port if port else 29092}
+        print(f'{host}:{port}')
         args = (host, port if port else 29092)
         cbs = {
             L2_BOOK: BookKafka(*args, snapshot_interval=snap_interval, snapshots_only=snap_only),
