@@ -17,6 +17,7 @@ from cryptofeed.backends.postgres import BookPostgres, TradePostgres, TickerPost
 from cryptofeed.backends.socket import BookSocket, TradeSocket, TickerSocket, FundingSocket, CandlesSocket, OpenInterestSocket, LiquidationsSocket
 from cryptofeed.backends.influxdb import BookInflux, TradeInflux, TickerInflux, FundingInflux, CandlesInflux, OpenInterestInflux, LiquidationsInflux
 from cryptofeed.backends.quest import BookQuest, TradeQuest, TickerQuest, FundingQuest, CandlesQuest, OpenInterestQuest, LiquidationsQuest
+from cryptofeed.backends.kafka import BookKafka, TradeKafka, TickerKafka, FundingKafka, CandlesKafka, OpenInterestKafka, LiquidationsKafka
 
 
 async def tty(obj, receipt_ts):
@@ -128,6 +129,17 @@ def load_config() -> Feed:
             CANDLES: CandlesQuest(**kwargs),
             OPEN_INTEREST: OpenInterestQuest(**kwargs),
             LIQUIDATIONS: LiquidationsQuest(**kwargs)
+        }
+    elif backend == 'KAFKA':
+        kwargs = {'bootstrap': host, 'port': port if port else 9092}
+        cbs = {
+            L2_BOOK: BookKafka(*args, snapshot_interval=snap_interval, snapshots_only=snap_only, **kwargs),
+            TRADES: TradeKafka(**kwargs),
+            TICKER: TickerKafka(**kwargs),
+            FUNDING: FundingKafka(**kwargs),
+            CANDLES: CandlesKafka(**kwargs),
+            OPEN_INTEREST: OpenInterestKafka(**kwargs),
+            LIQUIDATIONS: LiquidationsKafka(**kwargs)
         }
     elif backend == 'TTY':
         cbs = {
