@@ -17,4 +17,4 @@ channels:
 symbols_per_channel: 1000
 
 backend: KAFKA
-host: redpanda:29092
+host: redpanda
