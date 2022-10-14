@@ -131,9 +131,10 @@ def load_config() -> Feed:
             LIQUIDATIONS: LiquidationsQuest(**kwargs)
         }
     elif backend == 'KAFKA':
-        kwargs = {'bootstrap': host, 'port': port if port else 29092}
+        # args = {'bootstrap': host, 'port': port if port else 29092}
+        args = (host, port if port else 29092)
         cbs = {
-            L2_BOOK: BookKafka(snapshot_interval=snap_interval, snapshots_only=snap_only, **kwargs),
+            L2_BOOK: BookKafka(*args, snapshot_interval=snap_interval, snapshots_only=snap_only),
             TRADES: TradeKafka(**kwargs),
             TICKER: TickerKafka(**kwargs),
             FUNDING: FundingKafka(**kwargs),
