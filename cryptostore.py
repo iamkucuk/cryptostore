@@ -53,8 +53,8 @@ def load_config() -> Feed:
     snap_interval = int(snap_interval)
     host = os.environ.get('HOST', '127.0.0.1')
     port = os.environ.get('PORT')
-    if port:
-        port = int(port)
+    # if port:
+    #     port = int(port)
     candle_interval = os.environ.get('CANDLE_INTERVAL', '1m')
     database = os.environ.get('DATABASE')
     user = os.environ.get('USER')
