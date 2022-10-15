@@ -48,6 +48,8 @@ services:"""
         container_name: {exchange.upper()}_{chan.upper()}
         volumes:
             - /home/furkan/cryptostore:/cryptostore
+        depends_on: 
+            - redpanda
         environment:
             - EXCHANGE={exchange.upper()}
             - CHANNELS={chan}
