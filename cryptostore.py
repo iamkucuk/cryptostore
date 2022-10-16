@@ -63,6 +63,7 @@ def load_config() -> Feed:
     org = os.environ.get('ORG')
     bucket = os.environ.get('BUCKET')
     token = os.environ.get('TOKEN')
+    depth = os.environ.get('DEPTH', 100)
 
     cbs = None
     if backend == 'REDIS' or backend == 'REDISSTREAM':
@@ -121,7 +122,7 @@ def load_config() -> Feed:
             LIQUIDATIONS: LiquidationsInflux(*args)
         }
     elif backend == 'QUEST':
-        kwargs = {'host': host, 'port': port if port else 9009, 'depth': 500}
+        kwargs = {'host': host, 'port': port if port else 9009, 'depth': depth}
         cbs = {
             L2_BOOK: BookQuest(**kwargs),
             TRADES: TradeQuest(**kwargs),
