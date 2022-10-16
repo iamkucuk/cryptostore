@@ -5,6 +5,7 @@ associated with this software.
 '''
 from datetime import datetime
 import os
+import time
 
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import EXCHANGE_MAP
@@ -163,6 +164,7 @@ def load_config() -> Feed:
 
 
 def main():
+    time.sleep(60)
     fh = FeedHandler()
     cfg = load_config()
     fh.add_feed(cfg)

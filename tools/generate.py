@@ -40,19 +40,19 @@ services:"""
 
         for i in range(0, len(symbols), config['symbols_per_channel']):
             print(f"docker run --name {exchange.upper()} -d --rm -e EXCHANGE={exchange.upper()} -e CHANNELS='{','.join(config['channels'])}' -e SYMBOLS='{','.join(symbols[i:i+config['symbols_per_channel']])}' -e BACKEND={config['backend']} {kwargs_str} cryptostore_new")
-            for chan in config["channels"]:
-                compose_string += f"""
-    {exchange.lower()}_{chan.lower()}:
+            # for chan in config["channels"]:
+            compose_string += f"""
+    {exchange.lower()}:
         image: cryptostore
         restart: always
-        container_name: {exchange.upper()}_{chan.upper()}
+        container_name: {exchange.upper()}
         volumes:
             - /home/furkan/cryptostore:/cryptostore
         depends_on: 
             - redpanda
         environment:
             - EXCHANGE={exchange.upper()}
-            - CHANNELS={chan}
+            - CHANNELS='{','.join(config['channels'])}'
             - SYMBOLS={','.join(symbols[i:i+config['symbols_per_channel']])}
             - BACKEND={config['backend']}{kwargs_str.replace('-e ', os.linesep + '            - ')}"""
 
