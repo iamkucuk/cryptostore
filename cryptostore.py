@@ -164,7 +164,7 @@ def load_config() -> Feed:
 
 
 def main():
-    time.sleep(60)
+    time.sleep(120)
     fh = FeedHandler()
     cfg = load_config()
     fh.add_feed(cfg)
