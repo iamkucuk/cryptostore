@@ -121,7 +121,7 @@ def load_config() -> Feed:
             LIQUIDATIONS: LiquidationsInflux(*args)
         }
     elif backend == 'QUEST':
-        kwargs = {'host': host, 'port': port if port else 9009}
+        kwargs = {'host': host, 'port': port if port else 9009, 'depth': 500}
         cbs = {
             L2_BOOK: BookQuest(**kwargs),
             TRADES: TradeQuest(**kwargs),
@@ -164,7 +164,7 @@ def load_config() -> Feed:
 
 
 def main():
-    time.sleep(120)
+    # time.sleep(120)
     fh = FeedHandler()
     cfg = load_config()
     fh.add_feed(cfg)
