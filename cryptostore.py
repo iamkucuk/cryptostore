@@ -63,7 +63,7 @@ def load_config() -> Feed:
     org = os.environ.get('ORG')
     bucket = os.environ.get('BUCKET')
     token = os.environ.get('TOKEN')
-    depth = os.environ.get('DEPTH', 100)
+    depth = int(os.environ.get('DEPTH', 100))
 
     cbs = None
     if backend == 'REDIS' or backend == 'REDISSTREAM':
