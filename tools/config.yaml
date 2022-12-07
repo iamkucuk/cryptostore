@@ -21,3 +21,4 @@ depth: 500
 
 backend: KAFKA
 host: redpanda
+port: 29092

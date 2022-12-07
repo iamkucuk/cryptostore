@@ -29,6 +29,8 @@ services:"""
                 parity2_curr = symbols[i].split('-')[1]
                 if (not any (parity1_query == parity1_curr for parity1_query in config['symbols'][exchange])) or (not any (x == parity2_curr for x in ["BTC", "USD", "USDT", "BUSD", "USDC"])):
                     to_be_deleted_list.append(i)
+                elif "PINDEX" in symbols[i]:
+                    to_be_deleted_list.append(i)
             for to_be_deleted in reversed(to_be_deleted_list):
                 del symbols[to_be_deleted]
 
