@@ -4,7 +4,7 @@ from cryptofeed.exchanges import EXCHANGE_MAP
 
 
 def main():
-    with open("tools/config.yaml", 'r') as fp:
+    with open("./config.yaml", 'r') as fp:
         config = yaml.safe_load(fp)
 
     kwargs = config.copy()
