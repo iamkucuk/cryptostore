@@ -19,5 +19,5 @@ channels:
 symbols_per_channel: 1000
 depth: 500
 
-backend: QUEST
-host: 100.100.105.127
+backend: KAFKA
+host: redpanda

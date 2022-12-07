@@ -9,7 +9,7 @@ def main():
 
     kwargs = config.copy()
     [kwargs.pop(key) for key in ('backend', 'channels', 'exchanges', 'symbols', 'symbols_per_channel')]
-    kwargs_str = '-e ' + ' -e '.join([f"{key.upper()}='{value}'" for key, value in kwargs.items()])
+    kwargs_str = '-e ' + ' -e '.join([f"{key.upper()}={value}" for key, value in kwargs.items()])
 
     compose_string = """version: "3.9"
 services:"""
@@ -50,28 +50,28 @@ services:"""
             - /home/furkan/cryptostore:/cryptostore
         environment:
             - EXCHANGE={exchange.upper()}
-            - CHANNELS='{','.join(config['channels'])}'
+            - CHANNELS={','.join(config['channels'])}
             - SYMBOLS={','.join(symbols[i:i+config['symbols_per_channel']])}
             - BACKEND={config['backend']}{kwargs_str.replace('-e ', os.linesep + '            - ')}"""
 
-    # compose_string += """
+    compose_string += """
         
-    # redpanda:
-    #     command:
-    #         - redpanda
-    #         - start
-    #         - --smp 1
-    #         - --overprovisioned
-    #         - --node-id 0
-    #         - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
-    #         - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
-    #     image: docker.vectorized.io/vectorized/redpanda:v21.11.15
-    #     container_name: redpanda
-    #     hostname: redpanda
-    #     ports:
-    #         - "9092:9092"
-    #         - "29092:29092"
-    #     """
+    redpanda:
+        command:
+            - redpanda
+            - start
+            - --smp 1
+            - --overprovisioned
+            - --node-id 0
+            - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+            - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+        image: docker.vectorized.io/vectorized/redpanda:v21.11.15
+        container_name: redpanda
+        hostname: redpanda
+        ports:
+            - "9092:9092"
+            - "29092:29092"
+        """
 
     with open("docker-compose.yml", "w") as f:
         f.write(compose_string)
