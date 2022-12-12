@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir pymongo[srv]
 RUN pip install --no-cache-dir motor
 RUN pip install --no-cache-dir asyncpg
 RUN pip install --no-cache-dir aiokafka
+RUN pip install --no-cache-dir numpy
 
 WORKDIR /cryptostore
 

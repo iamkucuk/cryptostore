@@ -66,8 +66,12 @@ services:"""
             - --overprovisioned
             - --node-id 0
             - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
-            - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
-        image: docker.vectorized.io/vectorized/redpanda:v21.11.15
+            - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://100.122.134.57:9092
+            - --set redpanda.log_cleanup_policy=compact
+            - --set redpanda.log_compression_type=zstd
+            - --set redpanda.transaction_coordinator_cleanup_policy=compact
+            - --set redpanda.retention_bytes='53687091200'
+        image: docker.vectorized.io/vectorized/redpanda:v22.3.5
         container_name: redpanda
         hostname: redpanda
         ports:
