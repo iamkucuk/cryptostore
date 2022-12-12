@@ -135,7 +135,7 @@ def load_config() -> Feed:
     elif backend == 'KAFKA':
         args = (host, str(port))
         cbs = {
-            L2_BOOK: BookKafka(*args, snapshot_interval=snap_interval, snapshots_only=snap_only),
+            L2_BOOK: BookKafka(*args, depth=depth, snapshot_interval=snap_interval, snapshots_only=snap_only),
             TRADES: TradeKafka(*args),
             TICKER: TickerKafka(*args),
             FUNDING: FundingKafka(*args),
