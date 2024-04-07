@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.7"
 services:
     binance:
         image: cryptostore
@@ -9,11 +9,11 @@ services:
         environment:
             - EXCHANGE=BINANCE
             - CHANNELS=l2_book,trades,ticker,candles
-            - SYMBOLS=ETH-BTC,LTC-BTC,BNB-BTC,BTC-USDT,ETH-USDT,LINK-BTC,EOS-BTC,ETC-BTC,TRX-BTC,XRP-BTC,BNB-USDT,MANA-BTC,ADA-BTC,LTC-USDT,ZIL-BTC,ADA-USDT,XRP-USDT,EOS-USDT,TRX-USDT,ETC-USDT,LINK-USDT,ZIL-USDT,MATIC-BTC,MATIC-USDT,ATOM-BTC,ATOM-USDT,FTM-BTC,FTM-USDT,DOGE-BTC,DOGE-USDT,CHZ-BTC,CHZ-USDT,BNB-BUSD,BTC-BUSD,XRP-BUSD,ETH-BUSD,LTC-BUSD,LINK-BUSD,ETC-BUSD,TRX-BUSD,EOS-BUSD,ADA-BUSD,BCH-BTC,BCH-USDT,BCH-BUSD,ATOM-BUSD,SOL-BTC,SOL-USDT,SOL-BUSD,MATIC-BUSD,ZIL-BUSD,SNX-BTC,SNX-BUSD,SNX-USDT,MKR-BTC,MKR-USDT,MKR-BUSD,MANA-BUSD,DOGE-BUSD,MANA-USDT,CRV-BTC,CRV-BUSD,CRV-USDT,SAND-BTC,SAND-USDT,SAND-BUSD,DOT-BTC,DOT-BUSD,DOT-USDT,WBTC-BTC,UNI-BTC,UNI-BUSD,UNI-USDT,AVAX-BTC,AVAX-BUSD,AVAX-USDT,AAVE-BTC,AAVE-BUSD,AAVE-USDT,NEAR-BTC,NEAR-BUSD,NEAR-USDT,FIL-BTC,FIL-BUSD,FIL-USDT,AXS-BTC,AXS-BUSD,AXS-USDT,GRT-BTC,GRT-USDT,CELO-BTC,CELO-USDT,GRT-BUSD,CHZ-BUSD,SHIB-USDT,SHIB-BUSD,FTM-BUSD,FTT-BUSD,FLOW-BTC,FLOW-BUSD,FLOW-USDT,XEC-BUSD,XEC-USDT,GALA-USDT,GALA-BUSD,GALA-BTC,CELO-BUSD,GMT-BTC,GMT-BUSD,GMT-USDT,APE-USDT,APE-BUSD,APE-BTC,LDO-BUSD,LDO-USDT,LDO-BTC,USTC-BUSD,WBTC-BUSD,HOOK-BNB
+            - SYMBOLS=ETH-BTC,LTC-BTC,BNB-BTC,BTC-USDT,ETH-USDT,LINK-BTC,ETC-BTC,TRX-BTC,XRP-BTC,BNB-USDT,ADA-BTC,LTC-USDT,ADA-USDT,XRP-USDT,TRX-USDT,ETC-USDT,BNB-USDC,BTC-USDC,ETH-USDC,XRP-USDC,LINK-USDT,LINK-USDC,LTC-USDC,ADA-USDC,MATIC-BTC,MATIC-USDT,DOGE-BTC,DOGE-USDT,DOGE-USDC,BCH-BTC,BCH-USDT,BCH-USDC,FTT-USDT,SOL-BTC,SOL-USDT,DOT-BTC,DOT-USDT,WBTC-BTC,UNI-BTC,UNI-USDT,AVAX-BTC,AVAX-USDT,SHIB-USDT,SOL-USDC,WBTC-USDT,AVAX-USDC,DOT-USDC,MATIC-USDC,UNI-USDC,SHIB-USDC,WIF-USDC
             - BACKEND=KAFKA
             - DEPTH=100 
             - HOST=redpanda 
-            - PORT=29092
+            - PORT=19092
     binance_futures:
         image: cryptostore
         restart: always
@@ -23,11 +23,11 @@ services:
         environment:
             - EXCHANGE=BINANCE_FUTURES
             - CHANNELS=l2_book,trades,ticker,candles
-            - SYMBOLS=BTC-USDT-PERP,ETH-USDT-PERP,BCH-USDT-PERP,XRP-USDT-PERP,EOS-USDT-PERP,LTC-USDT-PERP,TRX-USDT-PERP,ETC-USDT-PERP,LINK-USDT-PERP,ADA-USDT-PERP,BNB-USDT-PERP,ATOM-USDT-PERP,ZIL-USDT-PERP,DOGE-USDT-PERP,MKR-USDT-PERP,SNX-USDT-PERP,DOT-USDT-PERP,CRV-USDT-PERP,SOL-USDT-PERP,UNI-USDT-PERP,AVAX-USDT-PERP,FTM-USDT-PERP,NEAR-USDT-PERP,AAVE-USDT-PERP,FIL-USDT-PERP,MATIC-USDT-PERP,AXS-USDT-PERP,GRT-USDT-PERP,BTC-BUSD-PERP,CHZ-USDT-PERP,SAND-USDT-PERP,MANA-USDT-PERP,ETH-BUSD-PERP,BNB-BUSD-PERP,ADA-BUSD-PERP,XRP-BUSD-PERP,DOGE-BUSD-PERP,SOL-BUSD-PERP,GALA-USDT-PERP,CELO-USDT-PERP,FLOW-USDT-PERP,GMT-USDT-PERP,APE-USDT-PERP,AVAX-BUSD-PERP,NEAR-BUSD-PERP,GMT-BUSD-PERP,APE-BUSD-PERP,FTM-BUSD-PERP,GALA-BUSD-PERP,TRX-BUSD-PERP,DOT-BUSD-PERP,LINK-BUSD-PERP,SAND-BUSD-PERP,LTC-BUSD-PERP,MATIC-BUSD-PERP,FIL-BUSD-PERP,ETC-BUSD-PERP,LDO-BUSD-PERP,UNI-BUSD-PERP,LDO-USDT-PERP,BTC-USDT-22Z30,ETH-USDT-22Z30,BLUEBIRD-USDT-PINDEX
+            - SYMBOLS=BTC-USDT-PERP,ETH-USDT-PERP,BCH-USDT-PERP,XRP-USDT-PERP,LTC-USDT-PERP,TRX-USDT-PERP,ETC-USDT-PERP,LINK-USDT-PERP,ADA-USDT-PERP,BNB-USDT-PERP,DOGE-USDT-PERP,DOT-USDT-PERP,SOL-USDT-PERP,UNI-USDT-PERP,AVAX-USDT-PERP,MATIC-USDT-PERP,ETH-BTC-PERP,BTC-USDT-24M28,ETH-USDT-24M28,BTC-USDC-PERP,ETH-USDC-PERP,BNB-USDC-PERP,SOL-USDC-PERP,XRP-USDC-PERP,DOGE-USDC-PERP,LINK-USDC-PERP,AVAX-USDC-PERP,BTC-USDT-24U27,ETH-USDT-24U27,BCH-USDC-PERP
             - BACKEND=KAFKA
             - DEPTH=100 
             - HOST=redpanda 
-            - PORT=29092
+            - PORT=19092
     coinbase:
         image: cryptostore
         restart: always
@@ -37,11 +37,11 @@ services:
         environment:
             - EXCHANGE=COINBASE
             - CHANNELS=l2_book,trades,ticker,candles
-            - SYMBOLS=SNX-BTC,AXS-USDT,FLOW-USDT,QNT-USDT,ATOM-USD,SAND-USDT,UNI-USD,AXS-BTC,APE-USD,SHIB-USDT,APE-USDT,UNI-BTC,ALGO-BTC,MANA-USD,BTC-USD,MANA-USDC,XTZ-USD,DOGE-USDT,ETH-USDT,ATOM-BTC,XLM-BTC,ICP-USD,GRT-BTC,DOGE-USD,EGLD-USD,CHZ-USDT,ICP-BTC,NEAR-USDT,XRP-BTC,EOS-USD,XRP-USD,DOT-BTC,GRT-USD,MANA-BTC,XLM-USD,ICP-USDT,AAVE-BTC,ETH-BTC,ZEC-USDC,ADA-USDT,EOS-BTC,BCH-BTC,SOL-USD,AVAX-USDT,XTZ-BTC,AAVE-USD,BTC-USDC,ZEC-USD,MATIC-USDT,ADA-USD,ETC-USD,DAI-USDC,HBAR-USDT,NEAR-USD,DAI-USD,SNX-USD,LINK-USD,ETC-BTC,LTC-USD,MKR-USD,HBAR-USD,QNT-USD,ALGO-USD,ETH-USD,ETH-USDC,LINK-USDT,SOL-BTC,SAND-USD,BTC-USDT,AVAX-BTC,ATOM-USDT,CHZ-USD,LINK-BTC,AXS-USD,MATIC-USD,SOL-USDT,BCH-USD,FLOW-USD,MKR-BTC,ADA-USDC,ZEC-BTC,AVAX-USD,LTC-BTC,XLM-USDT,DOGE-BTC,DOT-USDT,SHIB-USD,FIL-USD,ADA-BTC,MATIC-BTC,DOT-USD,FIL-BTC,ENJ-USD
+            - SYMBOLS=LINK-USD,BTC-USDT,LTC-USD,XRP-BTC,DOT-BTC,XLM-USDT,BCH-USD,SOL-USD,ETH-USD,SHIB-USD,MATIC-BTC,ADA-USDC,ETC-BTC,BTC-USDC,AVAX-BTC,SOL-USDT,SOL-BTC,LINK-BTC,BTC-USD,XLM-BTC,ETH-USDT,MATIC-USDT,AVAX-USDT,DOGE-USDT,UNI-USD,AVAX-USD,DOGE-BTC,XRP-USDT,DOGE-USD,BCH-BTC,LTC-BTC,ADA-BTC,XLM-USD,ADA-USDT,MATIC-USD,UNI-BTC,XRP-USD,ETC-USD,ETH-USDC,SHIB-USDT,DOT-USD,ETH-BTC,ADA-USD,DOT-USDT,LINK-USDT,MASK-EUR
             - BACKEND=KAFKA
             - DEPTH=100 
             - HOST=redpanda 
-            - PORT=29092
+            - PORT=19092
     kraken:
         image: cryptostore
         restart: always
@@ -51,29 +51,63 @@ services:
         environment:
             - EXCHANGE=KRAKEN
             - CHANNELS=l2_book,trades,ticker,candles
-            - SYMBOLS=AAVE-USD,AAVE-BTC,ADA-USD,ADA-USDT,ADA-BTC,ALGO-USD,ALGO-USDT,ALGO-BTC,APE-USD,APE-USDT,ATOM-USD,ATOM-USDT,ATOM-BTC,AVAX-USD,AVAX-USDT,AXS-USD,BCH-USD,BCH-USDT,BCH-BTC,BTT-USD,CHZ-USD,DAI-USD,DAI-USDT,DOT-USD,DOT-USDT,DOT-BTC,EGLD-USD,EOS-USD,EOS-USDT,EOS-BTC,ETH-USDC,ETH-USDT,FIL-USD,FIL-BTC,FLOW-USD,FLOW-BTC,FTM-USD,GRT-USD,GRT-BTC,ICP-USD,LINK-USD,LINK-USDT,LINK-BTC,LTC-USDT,MANA-USD,MANA-USDT,MANA-BTC,MATIC-USD,MATIC-USDT,MATIC-BTC,MKR-USD,MKR-BTC,NEAR-USD,QNT-USD,SAND-USD,SAND-BTC,SHIB-USD,SHIB-USDT,SNX-USD,SNX-BTC,SOL-USD,SOL-USDT,SOL-BTC,TRX-USD,TRX-BTC,UNI-USD,UNI-BTC,WBTC-USD,WBTC-BTC,BTC-USDC,BTC-USDT,DOGE-USD,DOGE-USDT,ETC-BTC,ETC-USD,ETH-BTC,ETH-USD,LTC-BTC,LTC-USD,XMR-USDT,XRP-USDT,XTZ-USD,XTZ-USDT,XTZ-BTC,BTC-USD,DOGE-BTC,XLM-BTC,XLM-USD,XMR-BTC,XMR-USD,XRP-BTC,XRP-USD,ZEC-BTC,ZEC-USD,USD-JPY
+            - SYMBOLS=ADA-USD,ADA-USDT,ADA-BTC,AVAX-USD,AVAX-USDT,BCH-USD,BCH-USDT,BCH-BTC,DOT-USD,DOT-USDT,DOT-BTC,ETH-USDC,ETH-USDT,LINK-USD,LINK-USDT,LINK-BTC,LTC-USDT,MATIC-USD,MATIC-USDT,MATIC-BTC,SHIB-USD,SHIB-USDT,SOL-USD,SOL-USDT,SOL-BTC,TRX-USD,TRX-BTC,UNI-USD,UNI-BTC,WBTC-USD,WBTC-BTC,BTC-USDC,BTC-USDT,DOGE-USD,DOGE-USDT,ETC-BTC,ETC-USD,ETH-BTC,ETH-USD,LTC-BTC,LTC-USD,XMR-USDT,XRP-USDT,BTC-USD,DOGE-BTC,XLM-BTC,XLM-USD,XMR-BTC,XMR-USD,XRP-BTC,XRP-USD,USD-JPY
             - BACKEND=KAFKA
             - DEPTH=100 
             - HOST=redpanda 
-            - PORT=29092
+            - PORT=19092
         
-    redpanda:
+    redpanda-0:
         command:
-            - redpanda
-            - start
-            - --smp 1
-            - --overprovisioned
-            - --node-id 0
-            - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
-            - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://100.122.134.57:9092
-            - --set redpanda.log_cleanup_policy=compact
-            - --set redpanda.log_compression_type=zstd
-            - --set redpanda.transaction_coordinator_cleanup_policy=compact
-            - --set redpanda.retention_bytes='53687091200'
-        image: docker.vectorized.io/vectorized/redpanda:v22.3.5
-        container_name: redpanda
-        hostname: redpanda
+        - redpanda
+        - start
+        - --kafka-addr internal://0.0.0.0:9092,external://0.0.0.0:19092
+        # Address the broker advertises to clients that connect to the Kafka API.
+        # Use the internal addresses to connect to the Redpanda brokers'
+        # from inside the same Docker network.
+        # Use the external addresses to connect to the Redpanda brokers'
+        # from outside the Docker network.
+        - --advertise-kafka-addr internal://redpanda-0:9092,external://localhost:19092
+        - --pandaproxy-addr internal://0.0.0.0:8082,external://0.0.0.0:18082
+        # Address the broker advertises to clients that connect to the HTTP Proxy.
+        - --advertise-pandaproxy-addr internal://redpanda-0:8082,external://localhost:18082
+        - --schema-registry-addr internal://0.0.0.0:8081,external://0.0.0.0:18081
+        # Redpanda brokers use the RPC API to communicate with each other internally.
+        - --rpc-addr redpanda-0:33145
+        - --advertise-rpc-addr redpanda-0:33145
+        # Mode dev-container uses well-known configuration properties for development in containers.
+        - --mode dev-container
+        # Tells Seastar (the framework Redpanda uses under the hood) to use 1 core on the system.
+        - --smp 1
+        - --default-log-level=info
+        image: docker.redpanda.com/redpandadata/redpanda:v23.3.11
+        container_name: redpanda-0
+        volumes:
+        - redpanda-0:/var/lib/redpanda/data
         ports:
-            - "9092:9092"
-            - "29092:29092"
+        - 18081:18081
+        - 18082:18082
+        - 19092:19092
+        - 19644:9644
+    console:
+        container_name: redpanda-console
+        image: docker.redpanda.com/redpandadata/console:v2.4.5
+        entrypoint: /bin/sh
+        command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
+        environment:
+        CONFIG_FILEPATH: /tmp/config.yml
+        CONSOLE_CONFIG_FILE: |
+            kafka:
+            brokers: ["redpanda-0:9092"]
+            schemaRegistry:
+                enabled: true
+                urls: ["http://redpanda-0:8081"]
+            redpanda:
+            adminApi:
+                enabled: true
+                urls: ["http://redpanda-0:9644"]
+        ports:
+        - 8080:8080
+        depends_on:
+        - redpanda-0
         
