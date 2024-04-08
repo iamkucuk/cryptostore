@@ -133,15 +133,15 @@ def load_config() -> Feed:
             LIQUIDATIONS: LiquidationsQuest(**kwargs)
         }
     elif backend == 'KAFKA':
-        args = (host, str(port))
+        kwargs = {'bootstrap_servers': f'{host}:{port}'}
         cbs = {
-            L2_BOOK: BookKafka(*args, depth=depth, snapshot_interval=snap_interval, snapshots_only=snap_only),
-            TRADES: TradeKafka(*args),
-            TICKER: TickerKafka(*args),
-            FUNDING: FundingKafka(*args),
-            CANDLES: CandlesKafka(*args),
-            OPEN_INTEREST: OpenInterestKafka(*args),
-            LIQUIDATIONS: LiquidationsKafka(*args)
+            L2_BOOK: BookKafka(depth=depth, snapshot_interval=snap_interval, snapshots_only=snap_only, **kwargs),
+            TRADES: TradeKafka(**kwargs),
+            TICKER: TickerKafka(**kwargs),
+            FUNDING: FundingKafka(**kwargs),
+            CANDLES: CandlesKafka(**kwargs),
+            OPEN_INTEREST: OpenInterestKafka(**kwargs),
+            LIQUIDATIONS: LiquidationsKafka(**kwargs)
         }
     elif backend == 'TTY':
         cbs = {
